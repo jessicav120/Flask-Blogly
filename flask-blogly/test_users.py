@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from app import app
-from models import db, connect_db, User, DEFAULT_IMAGE_URL
+from models import db, connect_db, User, DEFAULT_IMAGE_URL, Post   
 
 # Use test database and don't clutter tests with SQL
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly_test'
@@ -12,7 +12,7 @@ app.config['TESTING'] = True
 
 # This is a bit of hack, but don't use Flask DebugToolbar
 app.config['DEBUG_TB_HOSTS'] = ['dont-show-debug-toolbar']
-
+  
 db.drop_all()
 db.create_all()
 
@@ -52,7 +52,7 @@ class BloglyViewsTestCase(TestCase):
             html = resp.get_data(as_text=True)
 
             self.assertIn('User Details', html)
-            self.assertIn('<h2>Test Case</h2>', html)
+            self.assertIn('<h2 class=\'col-6\'>Test Case</h2>', html)
             self.assertIn(self.user.image_url, html)
 
     def test_new_user(self):

@@ -7,11 +7,16 @@
     <title>Blogly</title>
 </head>
 <body>
-    <h1>{% block title %}Title{% endblock %}</h1>
+    
+    <div class='container'>
+        
+        <h1 class="display-2">{% block title %}Title{% endblock %}</h1>
 
-    {% block content %}
-        stuff
-    {% endblock %}
+        {% block content %}
+            stuff
+        {% endblock %}
+
+    </div>
 
 </body>
 </html>

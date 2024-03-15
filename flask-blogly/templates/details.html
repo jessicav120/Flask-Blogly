@@ -4,14 +4,37 @@
 
 {% block content %}
 
-<div>
-    <img src={{user.image_url}}>
-    <h2>{{user.first_name}} {{user.last_name}}</h2>
+<div class='row'>
+    <div class='col-sm-2'>
+        <img src={{user.image_url}} class='img-fluid'>
+    </div>
 
-    <form>
-        <button type='submit' formaction='/users/{{ user.id }}/edit' formmethod='GET'>Edit User</button>
-        <button type='submit' formaction='/users/{{ user.id }}/delete' formmethod='POST'>Delete User</button>
-    </form>
+    <div class='col-sm-10'>
+        
+        <div>
+            <h2 class='col-6'>{{user.first_name}} {{user.last_name}}</h2>
+            <form>
+                <button type='submit' formaction='/users/{{ user.id }}/edit' formmethod='GET' class='btn btn-primary'>Edit User</button>
+                <button type='submit' formaction='/users/{{ user.id }}/delete' formmethod='POST' class='btn btn-danger'>Delete User</button>
+            </form>
+        </div>
+        
+        <div class='mt-3'>
+            <h3> Posts </h3>
+            <ul>
+                {% for post in user_posts %}
+                <li>
+                    <a href='/posts/{{ post.id }}'>{{post.title}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <a href='/users/{{user.id}}/posts/new' class='btn btn-primary'>
+            Add Post
+        </a>
+    </div>
+        
 </div>
 
 <a href='/'>Back to home</a>

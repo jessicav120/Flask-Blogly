@@ -5,22 +5,29 @@
 {% block content %}
 
 <form action="/users/new" method='POST'>
-    <div>
-        <label for='first_name'>First Name</label>
-        <input type="text" name="first_name" id="first_name" placeholder='Enter first name'>
+    <div class='form-group row'>
+        <label for='first_name' class='col-sm-1 col-form-label'>First Name</label>
+        <div class='col-md-8'> 
+            <input type="text" name="first_name" id="first_name" class='form-control' placeholder='Enter first name'>
+        </div>
     </div>
 
-    <div>
-        <label for='last_name'>Last Name</label>
-        <input type="text" name="last_name" id="last_name" placeholder='Enter last name'>
+    <div class='form-group row'>
+        <label for='last_name' class='col-sm-1 col-form-label'>Last Name</label>
+        <div class='col-md-8'>
+            <input type="text" name="last_name" id="last_name" class='form-control' placeholder='Enter last name'>
+        </div>
     </div>
 
-    <div>
-        <label for='image_url'>Image URL</label>
-        <input type="text" name="image_url" id="image_url" placeholder='upload a profile picture'>
+    <div class='form-group row'>
+        <label for='image_url' class='col-sm-1 col-form-label'>Image URL</label>
+        <div class='col-md-8'>
+            <input type="text" name="image_url" id="image_url" class='form-control' placeholder='upload a profile picture'>
+        </div>
     </div>
 
-    <button type='submit'>Add User</button>
+    <button type='submit' class='btn btn-primary'>Add User</button>
+    <a href="/users" class='btn btn-outline-danger'>Cancel</a>
 </form>
 
 {% endblock %}
