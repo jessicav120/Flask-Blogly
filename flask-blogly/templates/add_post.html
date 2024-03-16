@@ -24,6 +24,18 @@
 
     </div>
 
+    <div>
+        Add tag:
+
+        {% for tag in tags %}
+        <div class='form-check form-check-inline'>
+            <label class='form-check-label' for='tag_{{ tag.id }}'>{{ tag.name }}</label>
+            
+            <input class='form-check-input' type='checkbox' value='{{ tag.id }}' id='tag_{{tag.id}}' name='tags'>
+        </div>
+        {% endfor %}
+    </div>
+
     <button type='submit' class='btn btn-primary'>Post</button>
     <a href="/users/{{user.id}}" class='btn btn-outline-danger'>Cancel</a>
 </form>

@@ -5,7 +5,16 @@
 {% block content %}
 
 <h5>By: {{post.user.first_name}} {{post.user.last_name}}</h5>
-<p>{{date}}</p>
+<p class='mb-1'>{{date}}</p>
+
+{% if post.tags %}
+<p>
+    Tags:
+    {% for tag in post.tags %}
+    <a href='/tags/{{tag.id}}' class="badge bg-secondary"> {{tag.name}} </a>
+    {% endfor %}
+</p>
+{% endif %}
 
 <div>
     <p>{{post.content}}</p>
@@ -15,7 +24,9 @@
     <button type='submit' formaction='/posts/{{post.id}}/edit' formmethod='GET' class='btn btn-outline-primary'>Edit Post</button>
     <button type='submit' formaction='/posts/{{post.id}}/delete' formmethod='POST' class='btn btn-outline-danger'>Delete Post</button>
 </form>
+
 <a href='/users/{{post.user.id}}'>Back to user</a>
 <br>
 <a href='/'>Back to home</a>
+
 {% endblock %}
